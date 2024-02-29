@@ -1,0 +1,49 @@
+<div class="content" id="content">
+  <h1 class="mt-3">Calculadora de Investimento em CDB</h1>
+
+  <div class="row">
+    <div class="col-4">
+      <form class="mt-5" #form="ngForm" (ngSubmit)="calcularInvestimento()">
+        <div class="form-group">
+          <label for="valorInicial">Valor Inicial (R$)</label>
+          <input
+            type="number"
+            id="valorInicial"
+            name="valorInicial"
+            class="form-control"
+            [(ngModel)]="valorInicial"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="prazo">Prazo em meses</label>
+          <input
+            type="number"
+            id="prazo"
+            name="prazo"
+            class="form-control"
+            [(ngModel)]="prazo"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Calcular
+        </button>
+      </form>
+
+
+    </div>
+    <div class="col-8">
+      <div *ngIf="valorFinal !== undefined" class="card mt-5">
+        <div class="card-header">
+          Resultado do Investimento
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Valor final do investimento após {{ prazo }} meses: <b>{{ valorFinal | currency: 'BRL' }}</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
